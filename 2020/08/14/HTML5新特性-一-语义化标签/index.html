@@ -1,0 +1,361 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HTML5新特性(一.语义化标签) | 小何blog (记录美好)</title><meta name="description" content="HTML5新特性(一.语义化标签)，HTML5系列，感觉很方便，而且面试会问，感觉平时可以多用。"><meta name="keywords" content="HTML5,系列,语义化"><meta name="author" content="六根清静"><meta name="copyright" content="六根清静"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="http://qew58kkb2.hn-bkt.clouddn.com/favicon.png"><link rel="canonical" href="https://he1213114428.github.io/2020/08/14/HTML5%E6%96%B0%E7%89%B9%E6%80%A7-%E4%B8%80-%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="HTML5新特性(一.语义化标签)"><meta property="og:url" content="https://he1213114428.github.io/2020/08/14/HTML5%E6%96%B0%E7%89%B9%E6%80%A7-%E4%B8%80-%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/"><meta property="og:site_name" content="小何blog (记录美好)"><meta property="og:description" content="HTML5新特性(一.语义化标签)，HTML5系列，感觉很方便，而且面试会问，感觉平时可以多用。"><meta property="og:image" content="https://gitee.com/he_chaoming/blog_tuchuang/raw/master/1597229144765.jpeg"><meta property="article:published_time" content="2020-08-14T12:52:45.000Z"><meta property="article:modified_time" content="2020-08-16T02:03:32.377Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = '2'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e829919a4d931d733ee74d5d97a51582";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"limitCount":20,"languages":{"author":"作者: 六根清静","link":"链接: ","source":"来源: 小何blog (记录美好)","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isanchor: true    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-08-16 10:03:32'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/change1.css"><link rel="stylesheet" href="/css/change.css"><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/clock.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/iconfont.min.css"><link rel="stykesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/pool.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/><meta name="generator" content="Hexo 5.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="http://qew58kkb2.hn-bkt.clouddn.com/cat.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">10</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">17</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">17</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/galleryGroup"><i class="fa-fw fas fa-photo-video"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messagepad/"><i class="fa-fw fas fa-edit"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="web_bg" data-type="color"></div><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML5%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">HTML5是什么？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML5%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">HTML5有什么好处？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML5%E7%BC%BA%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">HTML5缺点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML5%E5%8D%81%E5%A4%A7%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">HTML5十大新特性:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE"><span class="toc-number">4.0.1.</span> <span class="toc-text">语义化标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%BC%BA%E5%9E%8B%E8%A1%A8%E5%8D%95"><span class="toc-number">4.0.2.</span> <span class="toc-text">增强型表单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E5%92%8C%E9%9F%B3%E9%A2%91"><span class="toc-number">4.0.3.</span> <span class="toc-text">视频和音频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Canvas%E7%BB%98%E5%9B%BE"><span class="toc-number">4.0.4.</span> <span class="toc-text">Canvas绘图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SVG%E7%BB%98%E5%9B%BE"><span class="toc-number">4.0.5.</span> <span class="toc-text">SVG绘图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D"><span class="toc-number">4.0.6.</span> <span class="toc-text">地理定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%96%E6%94%BEAPI"><span class="toc-number">4.0.7.</span> <span class="toc-text">拖放API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Worker"><span class="toc-number">4.0.8.</span> <span class="toc-text">Web Worker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Storage"><span class="toc-number">4.0.9.</span> <span class="toc-text">Web Storage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket"><span class="toc-number">4.0.10.</span> <span class="toc-text">WebSocket</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE"><span class="toc-number">5.</span> <span class="toc-text">一.语义化标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">5.0.1.</span> <span class="toc-text">概念:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8-%E8%BF%99%E9%87%8C%E4%B8%A4%E4%B8%AA%E6%A0%87%E7%AD%BE%E9%83%BD%E5%8F%AF%E4%BB%A5%E4%BD%9C%E4%B8%BA%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98%E5%86%85%E5%AE%B9%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%8C%E5%8D%95%E7%9C%8B%E6%A0%87%E7%AD%BE%E7%9A%84%E8%AF%9D%E4%B8%8D%E7%9F%A5%E9%81%93%E8%BF%99%E6%AE%B5%E5%86%85%E5%AE%B9%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%8C%E6%89%80%E4%BB%A5%E8%AF%AD%E4%B9%89%E5%8C%96%E5%B0%B1%E6%98%AF%E4%B8%BA%E4%BA%86%E4%BC%98%E5%8C%96%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E3%80%82"><span class="toc-number">5.0.1.1.</span> <span class="toc-text">注: 这里两个标签都可以作为文章标题内容的容器，单看标签的话不知道这段内容是什么意思，所以语义化就是为了优化这个问题。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE"><span class="toc-number">5.0.2.</span> <span class="toc-text">常见的语义化标签:</span></a></li></ol></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/he_chaoming/blog_tuchuang/raw/master/1597229144765.jpeg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">小何blog (记录美好)</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/galleryGroup"><i class="fa-fw fas fa-photo-video"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messagepad/"><i class="fa-fw fas fa-edit"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">HTML5新特性(一.语义化标签)</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-08-14T12:52:45.000Z" title="发表于 2020-08-14 20:52:45">2020-08-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-08-16T02:03:32.377Z" title="更新于 2020-08-16 10:03:32">2020-08-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HTML5/">HTML5</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%B3%BB%E5%88%97/">系列</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HTML5/%E8%AF%AD%E4%B9%89%E5%8C%96/">语义化</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="HTML5是什么？"><a href="#HTML5是什么？" class="headerlink" title="HTML5是什么？"></a>HTML5是什么？</h1><p>html5是万维网的核心语言、标准通用标记语言下的一个应用超文本标记语言（HTML）的第五次重大修改。本次修改后的标准我们就称之为html5。</p>
+<h1 id="HTML5有什么好处？"><a href="#HTML5有什么好处？" class="headerlink" title="HTML5有什么好处？"></a>HTML5有什么好处？</h1><p>HTML5主要是提供您想要的网站效果，而无需其他软件，如浏览器插件。它可以完成从动画到应用程序，从音乐到电影的各种操作，还可以用于构建在浏览器中运行的极其复杂的应用程序。</p>
+<h1 id="HTML5缺点"><a href="#HTML5缺点" class="headerlink" title="HTML5缺点"></a>HTML5缺点</h1><p>html5多了十个新特性，但其不支持ie8及ie8以下版本的浏览器(兼容问题)，但是经过时间的洗涤，技术的更新，这些兼容问题会慢慢的解决的。</p>
+<h1 id="HTML5十大新特性"><a href="#HTML5十大新特性" class="headerlink" title="HTML5十大新特性:"></a>HTML5十大新特性:</h1><ol>
+<li><h3 id="语义化标签"><a href="#语义化标签" class="headerlink" title="语义化标签"></a>语义化标签</h3></li>
+<li><h3 id="增强型表单"><a href="#增强型表单" class="headerlink" title="增强型表单"></a>增强型表单</h3></li>
+<li><h3 id="视频和音频"><a href="#视频和音频" class="headerlink" title="视频和音频"></a>视频和音频</h3></li>
+<li><h3 id="Canvas绘图"><a href="#Canvas绘图" class="headerlink" title="Canvas绘图"></a>Canvas绘图</h3></li>
+<li><h3 id="SVG绘图"><a href="#SVG绘图" class="headerlink" title="SVG绘图"></a>SVG绘图</h3></li>
+<li><h3 id="地理定位"><a href="#地理定位" class="headerlink" title="地理定位"></a>地理定位</h3></li>
+<li><h3 id="拖放API"><a href="#拖放API" class="headerlink" title="拖放API"></a>拖放API</h3></li>
+<li><h3 id="Web-Worker"><a href="#Web-Worker" class="headerlink" title="Web Worker"></a>Web Worker</h3></li>
+<li><h3 id="Web-Storage"><a href="#Web-Storage" class="headerlink" title="Web Storage"></a>Web Storage</h3></li>
+<li><h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3></li>
+</ol>
+<h1 id="一-语义化标签"><a href="#一-语义化标签" class="headerlink" title="一.语义化标签"></a>一.语义化标签</h1><ul>
+<li><h3 id="概念"><a href="#概念" class="headerlink" title="概念:"></a>概念:</h3><p>语义化的标签，旨在让标签有自己的含义。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>我是文章标题<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>我是文章标题<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="注-这里两个标签都可以作为文章标题内容的容器，单看标签的话不知道这段内容是什么意思，所以语义化就是为了优化这个问题。"><a href="#注-这里两个标签都可以作为文章标题内容的容器，单看标签的话不知道这段内容是什么意思，所以语义化就是为了优化这个问题。" class="headerlink" title="注: 这里两个标签都可以作为文章标题内容的容器，单看标签的话不知道这段内容是什么意思，所以语义化就是为了优化这个问题。"></a>注: 这里两个标签都可以作为文章标题内容的容器，单看标签的话不知道这段内容是什么意思，所以语义化就是为了优化这个问题。</h4></li>
+</ul>
+<ul>
+<li><h3 id="常见的语义化标签"><a href="#常见的语义化标签" class="headerlink" title="常见的语义化标签:"></a>常见的语义化标签:</h3></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">标签:</th>
+<th align="center">描述:</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&lt;header&gt;</td>
+<td align="center">定义网页或文档的头部区域，通常包括网站标志、主导航、全站链接以及搜索框。</td>
+</tr>
+<tr>
+<td align="center">&lt;title&gt;</td>
+<td align="center">页面主体内容，身体区域</td>
+</tr>
+<tr>
+<td align="center">&lt;footer&gt;</td>
+<td align="center">定义 section 或 document 的页脚。在多数情况下，该元素会包含作者的姓名、文档的创作日期或联系信息。注: 只有当父级是body时，才是整个页面的页脚。</td>
+</tr>
+<tr>
+<td align="center">&lt;hn&gt;</td>
+<td align="center">h1~h6，分级标题，<code>&lt;h1&gt;</code> 与 <code>&lt;title&gt;</code> 协调有利于搜索引擎优化。</td>
+</tr>
+<tr>
+<td align="center">&lt;nav&gt;</td>
+<td align="center">标记导航，为了方便搜索引擎解析，最好是将主要的链接放在nav中。可以在<header>标签中使用</td>
+</tr>
+<tr>
+<td align="center">&lt;section&gt;</td>
+<td align="center">定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。</td>
+</tr>
+<tr>
+<td align="center">&lt;article&gt;</td>
+<td align="center">应该使用在相对比较独立、完整的的内容区块，所以我们可以在一篇博客、一个论坛帖子、一篇新闻报道或者一个用户评论中使用<article>元素。article可以互相嵌套。</td>
+</tr>
+<tr>
+<td align="center">&lt;aside&gt;</td>
+<td align="center">所包含的内容不是页面的主要内容、具有独立性，是对页面的补充。<aside>一般使用在页面、文章的侧边栏、广告、友情链接等区域。</td>
+</tr>
+<tr>
+<td align="center">&lt;main&gt;</td>
+<td align="center">页面主要内容，一个页面只能使用一次。如果是web应用，则包围其主要功能。</td>
+</tr>
+<tr>
+<td align="center">&lt;details&gt;</td>
+<td align="center">定义用户可以看到或者隐藏的额外细节</td>
+</tr>
+<tr>
+<td align="center">&lt;dialog&gt;</td>
+<td align="center">定义对话框</td>
+</tr>
+<tr>
+<td align="center">&lt;figure&gt;</td>
+<td align="center">规定独立的流内容（图像、图表、照片、代码等等）（默认有40px左右和16px上下margin）。</td>
+</tr>
+<tr>
+<td align="center">&lt;figcaption&gt;</td>
+<td align="center">定义 <code>figure</code> 元素的标题，应该被置于 <code>figure</code> 元素的第一个或最后一个子元素的位置。</td>
+</tr>
+<tr>
+<td align="center">&lt;mark&gt;</td>
+<td align="center">使用黄色突出显示部分文本。</td>
+</tr>
+<tr>
+<td align="center">&lt;small&gt;</td>
+<td align="center">呈现小号字体效果，指定细则，输入免责声明、注解、署名、版权。</td>
+</tr>
+<tr>
+<td align="center">&lt;strong&gt;</td>
+<td align="center">和 <code>em</code> 标签一样，用于强调文本，但它强调的程度更强一些。</td>
+</tr>
+<tr>
+<td align="center">&lt;em&gt;</td>
+<td align="center">将其中的文本表示为强调的内容，表现为斜体。</td>
+</tr>
+<tr>
+<td align="center">&lt;cite&gt;</td>
+<td align="center">表示所包含的文本对某个参考文献的引用，比如书籍或者杂志的标题。且必须包含作品的标题。注: 通常，浏览器默认使用斜体来展示<code>&lt;cite&gt;</code>元素中的内容</td>
+</tr>
+<tr>
+<td align="center">&lt;blockquoto&gt;</td>
+<td align="center">定义块引用，块引用拥有它们自己的空间。</td>
+</tr>
+<tr>
+<td align="center">&lt;time&gt;</td>
+<td align="center">用来表示24小时制时间或者<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Gregorian_calendar">公历日期</a>，若表示日期则也可包含时间和时区。此元素意在以机器可读的格式表示日期和时间。 有安排日程表功能的应用可以利用这一点。</td>
+</tr>
+<tr>
+<td align="center">&lt;abbr&gt;</td>
+<td align="center">简称或缩写。</td>
+</tr>
+</tbody></table>
+<a class="btn-beautify button--animated blue right larger" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/" 
+  title="参考的MDN Web docs"><i class="far fa-hand-point-right fa-fw"></i><span>参考的MDN Web docs</span></a>
+
+
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">六根清静</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://he1213114428.github.io/2020/08/14/HTML5%E6%96%B0%E7%89%B9%E6%80%A7-%E4%B8%80-%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/">https://he1213114428.github.io/2020/08/14/HTML5新特性-一-语义化标签/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://he1213114428.github.io" target="_blank">小何blog (记录美好)</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/HTML5/">HTML5</a><a class="post-meta__tags" href="/tags/%E7%B3%BB%E5%88%97/">系列</a><a class="post-meta__tags" href="/tags/%E8%AF%AD%E4%B9%89%E5%8C%96/">语义化</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/he_chaoming/blog_tuchuang/raw/master/1597229144765.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="http://qew58kkb2.hn-bkt.clouddn.com/wechat%20%20%281%29.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="http://qew58kkb2.hn-bkt.clouddn.com/wechat%20%20%281%29.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/08/15/HTML5%E6%96%B0%E7%89%B9%E6%80%A7-%E4%BA%8C-%E5%A2%9E%E5%BC%BA%E5%9E%8B%E8%A1%A8%E5%8D%95/"><img class="prev-cover" data-lazy-src="https://gitee.com/he_chaoming/blog_tuchuang/raw/master/5.jpeg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">HTML5新特性(二.增强型表单)</div></div></a></div><div class="next-post pull-right"><a href="/2020/08/12/%E5%85%A5%E9%97%A8%E5%89%8D%E6%AE%B5%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF-%E8%87%AA%E8%BA%AB%E7%BB%8F%E5%8E%86/"><img class="next-cover" data-lazy-src="https://gitee.com/he_chaoming/blog_tuchuang/raw/master/1597229138179.jpeg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">前端入门学习路线(自身经历)</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/08/16/HTML5新特性-三-视频和音频/" title="HTML5新特性(三.视频和音频)"><img class="relatedPosts_cover" data-lazy-src="https://gitee.com/he_chaoming/blog_tuchuang/raw/master/20200816/@5KiD^bajc@Q.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-16</div><div class="relatedPosts_title">HTML5新特性(三.视频和音频)</div></div></a></div><div class="relatedPosts_item"><a href="/2020/08/15/HTML5新特性-二-增强型表单/" title="HTML5新特性(二.增强型表单)"><img class="relatedPosts_cover" data-lazy-src="https://gitee.com/he_chaoming/blog_tuchuang/raw/master/5.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-15</div><div class="relatedPosts_title">HTML5新特性(二.增强型表单)</div></div></a></div><div class="relatedPosts_item"><a href="/2020/08/17/Vue知识点总结-一/" title="Vue知识点总结(一)"><img class="relatedPosts_cover" data-lazy-src="https://gitee.com/he_chaoming/blog_tuchuang/raw/master/20200817/Jcw3rhoMSX6V.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-17</div><div class="relatedPosts_title">Vue知识点总结(一)</div></div></a></div><div class="relatedPosts_item"><a href="/2020/08/26/Vue知识点总结-三-Vue实例的属性和方法/" title="Vue知识点总结(三.Vue实例的属性和方法)"><img class="relatedPosts_cover" data-lazy-src="https://gitee.com/he_chaoming/blog_tuchuang/raw/master/文章bg/v2-7e36bbf302377459208d84f15c14562d_r.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-26</div><div class="relatedPosts_title">Vue知识点总结(三.Vue实例的属性和方法)</div></div></a></div><div class="relatedPosts_item"><a href="/2020/08/27/Vue知识点总结-四-生命周期/" title="Vue知识点总结(四.生命周期简介与钩子函数)"><img class="relatedPosts_cover" data-lazy-src="https://gitee.com/he_chaoming/blog_tuchuang/raw/master/文章bg/v2-47003f6638666652d3f0cf9cae7d81f8_r.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-27</div><div class="relatedPosts_title">Vue知识点总结(四.生命周期简介与钩子函数)</div></div></a></div><div class="relatedPosts_item"><a href="/2020/08/20/Vue知识点总结-二-组件化开发/" title="Vue知识点总结(二.组件化开发)"><img class="relatedPosts_cover" data-lazy-src="https://gitee.com/he_chaoming/blog_tuchuang/raw/master/20200820/3IlRh8gQ9aXk.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-20</div><div class="relatedPosts_title">Vue知识点总结(二.组件化开发)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By 六根清静</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi,  welcome  to  my  <a  href="">blog</a>!</div><div class="icp"><a><img class="icp-icon" src="/img/icp.png"/><span>豫ICP备2020025430号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    window.valine = new Valine({
+      el: '#vcomment',
+      appId: 'dofhRWwFB8Iazo5zNeS0L6kl-gzGzoHsz',
+      appKey: 'zYkqG3Ef17BPNsRV0cdwJ6CS',
+      placeholder: '正确填写邮箱,才能及时收到回复哦ヽ(^0^)ノ',
+      avatar: 'robohash',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+    });
+    if ('nick,mail') { valine.config.requiredFields= 'nick,mail'.split(',') }
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/js/xkTool.js"></script><script src="/js/pjax.js"></script><script src="/js/vue.min.js"></script><script src="/js/clock.js"></script><script type="text/javascript" src="https://www.airvisual.com/scripts/widget_v2.0.js"></script><script> $(".card-weather").eq(0).insertAfter($(".date").eq(0))</script><script> setTimeout(function(){$('.monoline').eq(0).html($(".monoline strong").eq(0).text().replace('°','℃'));},5000);</script><script> $(".card-aqi").eq(0).insertAfter($(".card-weather").eq(0))</script><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script src="/js/change1.js"></script><script src="/js/change.js"></script><script src="/js/history.js"></script><script src="/js/historyroll.js"></script><script src="/js/myBg.js"></script><script src="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/js/pool.min.js"><div class="aplayer no-destroy" data-id="2916766519" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" data-volume="0.4" muted></div><canvas class="fireworks"></canvas><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script defer="defer" id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/6fdec148.js","daovoice")
+</script><script>var isChatBtn = true
+daovoice('init', {
+  app_id: '6fdec148',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  'meta[name=description]',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+const pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+})
+
+document.addEventListener('pjax:complete', function () {
+  refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+})
+
+document.addEventListener('pjax:send', function () {
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+  //reset font-size
+  $('body').css('font-size') !== originFontSize && $('body').css('font-size', parseFloat(originFontSize))
+})</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.6},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body></html>
